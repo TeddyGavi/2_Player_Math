@@ -17,7 +17,7 @@ class Game
 
   private
 
-  def next_player(current_player)
+  def switch_player(current_player)
     self.current_player = case current_player
                             when player1 then player2
                             when player2 then player1
@@ -25,19 +25,11 @@ class Game
   end
 
   def game_end
-    next_player(current_player)
+    switch_player(current_player)
     puts "Game over #{self.current_player.name} is the winner!     
     ----
     Thanks for playing!
     ----"
-  end
-
-  def lose?(current_player)
-    if current_player.lives == 0
-      true
-    else 
-      false
-    end
   end
 
   def ask_question?(question) 
@@ -63,10 +55,10 @@ class Game
         current_player.lose_life
       end
 
-      if lose?(current_player)
+      if current_player.lose? == true 
         self.game_end
       else
-        next_player(current_player)
+        switch_player(current_player)
         puts "Current lives: #{player1.name} with #{player1.lives} / 3 and #{player2.name} with #{player2.lives} / 3"
         puts "
 ---- 
