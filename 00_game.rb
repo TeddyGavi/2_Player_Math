@@ -6,11 +6,16 @@ class Game
   attr_reader :question
   def initialize
     puts "Player 1 is ...?"
-    @player1 = Player.new
+    name1 = gets.chomp.to_s
+    @player1 = Player.new("#{name1}")
     puts "Player 2 is...?"
-    @player2 = Player.new
+    name2 = gets.chomp.to_s
+    @player2 = Player.new("#{name2}")
     @current_player = @player1
+    self.start
   end
+
+  private
 
   def next_player(current_player)
     self.current_player = case current_player
@@ -19,7 +24,7 @@ class Game
                           end
   end
 
-  def win
+  def game_end
     next_player(current_player)
     puts "Game over #{self.current_player.name} is the winner!     
     ----
@@ -59,7 +64,7 @@ class Game
       end
 
       if lose?(current_player)
-        self.win
+        self.game_end
       else
         next_player(current_player)
         puts "Current lives: #{player1.name} with #{player1.lives} / 3 and #{player2.name} with #{player2.lives} / 3"
@@ -74,10 +79,11 @@ Next Round
       end
   end
 
+
 def start 
   puts "
   ----
-  Welcome to the game
+  Welcome to the game, you each have 3 lives. Good luck! 
   ----
 
   #{current_player.name} goes first
@@ -89,4 +95,3 @@ end
 
 
 game = Game.new
-game.start

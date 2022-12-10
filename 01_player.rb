@@ -1,10 +1,8 @@
 class Player
 attr_accessor :lives
 attr_reader :name
-  def initialize
-    puts "enter your name?"
-    input = gets.chomp.to_s
-    @name = input
+  def initialize(n)
+    @name = n
     @lives = 3 
   end
   
