@@ -35,15 +35,28 @@ class Game
     end
   end
 
+  def ask_question?(question) 
+    answer = question.answer
+    puts question.current_q
+
+    input = gets.chomp.to_i
+
+    if input == answer
+      true
+    else
+      false
+    end
+  end
+
   def game_loop
     question = Question.new
 
-      if question.ask_question? == true
-        puts "Great! #{current_player.name}"
+      if self.ask_question?(question) == true
+        print "Great! #{current_player.name} "
        else 
-        puts "Too bad! #{current_player.name}"
+        puts "Too bad, #{current_player.name} -------------------------------- the answer was #{question.answer}"
         current_player.lose_life
-       end
+      end
 
       if lose?(current_player)
         self.win

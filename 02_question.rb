@@ -7,20 +7,12 @@ class Question
     @option = %i(+ - / *)
   end
 
-def ask_question? 
+  def current_q 
+    "Question: What is #{num1} #{option[select]} #{num2}?"
+  end
+
+  def answer
     answer = num1.send(option[select], num2).round(2)
-    puts "Question: What is #{num1} #{option[select]} #{num2}?"
- 
-    input = gets.chomp.to_i
-
-    if input == answer
-      puts "You are correct! the answer was: #{answer}!"
-       true
-    else
-      puts "Sorry wrong answer, the answer was: #{answer}"
-      false      
-    end
-
   end
   
 end
