@@ -1,6 +1,3 @@
-require "./01_player.rb"
-require "./02_question.rb"
-
 # Create a new Game, get each players name, then start the game
 # GAME_LOOP
   # Create a new Question, ask the question, and get the answer from that current player
@@ -86,4 +83,3 @@ end
 
 end
 
-game = Game.new
