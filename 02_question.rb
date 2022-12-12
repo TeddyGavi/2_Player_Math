@@ -18,7 +18,7 @@ class Question
   def correct?(input)
     if input == self.answer
       true
-    else
+    else 
       false
     end
   end
