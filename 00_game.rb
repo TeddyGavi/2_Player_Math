@@ -12,6 +12,7 @@ class Game
     name2 = gets.chomp.to_s
     @player2 = Player.new("#{name2}")
     @current_player = @player1
+
     self.start
   end
 
@@ -32,23 +33,13 @@ class Game
     ----"
   end
 
-  def ask_question?(question) 
-    answer = question.answer
-    puts question.current_q
-
-    input = gets.chomp.to_i
-
-    if input == answer
-      true
-    else
-      false
-    end
-  end
-
   def game_loop
     question = Question.new
+    
+    puts question.ask
+    input = gets.chomp.to_i
 
-      if self.ask_question?(question) == true
+      if question.correct?(input) == true
         print "Great! #{current_player.name} "
        else 
         puts "Too bad, #{current_player.name} -------------------------------- the answer was #{question.answer}"

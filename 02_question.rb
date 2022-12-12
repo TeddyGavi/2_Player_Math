@@ -7,7 +7,7 @@ class Question
     @option = %i(+ - / *)
   end
 
-  def current_q 
+  def ask
     "Question: What is #{num1} #{option[select]} #{num2}?"
   end
 
@@ -15,4 +15,12 @@ class Question
     answer = num1.send(option[select], num2).round(2)
   end
   
+  def correct?(input)
+    if input == self.answer
+      true
+    else
+      false
+    end
+  end
+
 end
